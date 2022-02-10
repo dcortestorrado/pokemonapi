@@ -34,7 +34,7 @@ function crearTarjetas (dpersonajes){
             console.log(nombre2);
 
             pag.innerHTML += `
-            <div class="col">
+            <div class="col-lg-3 col-md-4 col-6">
                 <div class="card align-items-center">
                     <figure class="hover-img w-100 card-img-top">
                         <img src="${infopoke.sprites.front_default}">
