@@ -1,5 +1,9 @@
 let pag = document.querySelector("#personajes")
 let divPaginacion = document.querySelector("#paginacion")
+let tipos = '';
+let arreglo = [];
+let contadorTipos = 1;
+let stringTipo = '';
 
 let disabled_prev = '';
 let disabled_next = '';
@@ -32,6 +36,13 @@ function crearTarjetas (dpersonajes){
             nombre1 = infopoke.name;
             nombre2 = nombre1.charAt(0).toUpperCase() + nombre1.slice(1);
             console.log(nombre2);
+            
+            
+            for (const tipopoke of infopoke.types){
+                arreglo.push(tipopoke.type.name);
+            }
+
+            // console.log(arreglo);
 
             pag.innerHTML += `
             <div class="col-lg-3 col-md-4 col-6">
@@ -44,15 +55,23 @@ function crearTarjetas (dpersonajes){
                     </figure>
                     <div class="card-body">
                         <h5 class="card-title">${nombre2}</h5>
+                        <p class="mt-2 fw-bold text-center">Type(s):</p>
+                        <div id="tipo${contadorTipos}"></div>
                     </div>
                 </div>
             </div>
             `
-            
-
+            stringTipo = "tipo" + contadorTipos.toString();
+            tipos = document.getElementById(stringTipo);
+            console.log(tipos);
+            for (let i = 0; i < arreglo.length; i++){
+                let tipoMayus = arreglo[i].charAt(0).toUpperCase() + arreglo[i].slice(1);
+                tipos.innerHTML += `
+                <p class="text-center my-0">${tipoMayus}</p>`
+            }
+            arreglo = [];
+            contadorTipos++;
         })
-
-    
     }
 }
 
@@ -73,7 +92,7 @@ if (nuevaUrl === 0){
 }
     api.then(res_api => res_api.json())
         .then(dpersonajes => {
-            // console.log(dpersonajes)
+            // console.log(dpersonajes);
             limpiar();
             crearTarjetas(dpersonajes);
 
