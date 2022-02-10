@@ -4,11 +4,10 @@
     display: inline-block;
     margin: 8px;
     max-width: 320px;
-    min-width: 240px;
     overflow: hidden;
     position: relative;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
 }
 
 .hover-img * {
