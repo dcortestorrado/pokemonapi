@@ -94,6 +94,7 @@ if (nuevaUrl === 0){
         .then(dpersonajes => {
             // console.log(dpersonajes);
             limpiar();
+            contadorTipos = 1;
             crearTarjetas(dpersonajes);
 
             divPaginacion.innerHTML = `
